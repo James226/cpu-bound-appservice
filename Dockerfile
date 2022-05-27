@@ -1,5 +1,5 @@
-ARG SDK_VERSION=5.0-bullseye-slim
-ARG RUNTIME_VERSION=5.0-bullseye-slim
+ARG SDK_VERSION=6.0-bullseye-slim
+ARG RUNTIME_VERSION=6.0-bullseye-slim
 
 #
 # Install dependencies
@@ -56,4 +56,7 @@ ENV ASPNETCORE_URLS=http://+:80
 ENV ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
 
 EXPOSE 80
-ENTRYPOINT ["dotnet", "Sleeper.Api.dll"]
+
+COPY --chmod=+x entrypoint.sh .
+
+ENTRYPOINT ["./entrypoint.sh"]
